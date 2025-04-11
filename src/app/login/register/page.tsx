@@ -1,13 +1,9 @@
 "use client";
+import IUser from "@/constants/type";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
-interface IUser {
-  id?: number;
-  username?: string;
-  email?: string;
-  password?: string;
-}
+
 
 const RegisterPage = () => {
   const {
@@ -18,7 +14,6 @@ const RegisterPage = () => {
 
   const mutation = useMutation({
     mutationFn: async (payload: IUser) => {
-      console.log("🔥 Đang gọi API với:", payload);
       await fetch("http://localhost:8080/user/create", {
         method: "POST",
         body: JSON.stringify({
